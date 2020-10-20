@@ -117,7 +117,7 @@ if __name__ == '__main__':
             tx = MinterSetCandidateOffTx(
                 pub_key=pub_key,
                 nonce=nonce,
-                gas_coin='BIP',
+                gas_coin=0,
                 gas_price=50
             )
             if multisig:
