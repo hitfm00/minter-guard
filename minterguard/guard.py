@@ -98,7 +98,7 @@ class Guard(object):
                             e.__str__()
                         ))
                 if response is None:
-                    raise
+                    raise('Response is None')
 
                 # Raise exception on non 404 error (Validator not found)
                 if response.get('error'):
@@ -128,7 +128,7 @@ class Guard(object):
                                 e.__str__()
                             ))
                     if response is None:
-                        raise
+                        raise('Response is None')
 
                     if response.get('error'):
                         raise Exception(response['error'])

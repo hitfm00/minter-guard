@@ -35,7 +35,7 @@ if __name__ == '__main__':
     try:
         api_urls = config['API']['API_URL'].split()
         if len(api_urls) == 0:
-            raise
+            raise('Paste one or more API_URL in config file')
     except Exception:
         print('API_URL is not set in config file')
         sys.exit(1)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     try:
         pub_key = config['NODE']['PUB_KEY'].strip()
         if pub_key == '':
-            raise
+            raise('Insert your node public key')
     except Exception:
         print('PUB_KEY is not set in config file')
         sys.exit(1)
@@ -98,14 +98,14 @@ if __name__ == '__main__':
                 print(e.__str__())
 
         if nonce is None:
-            raise
+            raise('Nonce is none')
 
         if action == 'on':
             # Set candidate on tx
             tx = MinterSetCandidateOnTx(
                 pub_key=pub_key,
                 nonce=nonce,
-                gas_coin='BIP'
+                gas_coin=0
             )
             if multisig:
                 tx.sign(private_key=privates_key,ms_address=multi_addr)
